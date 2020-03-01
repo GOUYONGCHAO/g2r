@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-g2plot <- function(message, width = NULL, height = NULL, elementId = NULL) {
+g2plot <- function(data=data, width = NULL, height = NULL, elementId = NULL) {
   x = list(
     message = message)
 
