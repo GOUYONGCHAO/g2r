@@ -21,7 +21,8 @@ HTMLWidgets.widget({
       return {
   
         renderValue: function (x) {
-          chart.interval().position('genre*sold')
+          chart.data();
+          chart.interval().position('genre*sold');
           chart.render();
         },
   
