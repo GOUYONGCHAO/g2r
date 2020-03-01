@@ -21,7 +21,7 @@ HTMLWidgets.widget({
       return {
   
         renderValue: function (x) {
-          chart.data();
+          chart.data(data);
           chart.interval().position('genre*sold');
           chart.render();
         },
