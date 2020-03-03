@@ -3,9 +3,13 @@
 #' <Add Description>
 #'
 #' @import htmlwidgets
-#'
+#' 
+#' @param data data you will be plot
+#' 
 #' @export
 g2plot <- function(data=data, width = NULL, height = NULL, elementId = NULL) {
+  data=dataTransform(data)
+
   x = list(
     message = message)
 
