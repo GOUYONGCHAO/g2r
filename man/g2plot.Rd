@@ -4,7 +4,10 @@
 \alias{g2plot}
 \title{g2plot main function}
 \usage{
-g2plot(message, width = NULL, height = NULL, elementId = NULL)
+g2plot(data, width = NULL, height = NULL, ...)
+}
+\arguments{
+\item{data}{data you will be plot}
 }
 \description{
 <Add Description>

@@ -7,21 +7,51 @@
 #' @param data data you will be plot
 #' 
 #' @export
-g2plot <- function(data=data, width = NULL, height = NULL, elementId = NULL) {
-  data=dataTransform(data)
-
-  x = list(
-    message = message)
+g2plot <- function(data, width = NULL, height = NULL,elementId=NULL, ...) {
+  # create native g2plot attrs object
+  attrs <- list()
+  attrs$title <- main
+  attrs$xlabel <- xlab
+  attrs$ylabel <- ylab
+  attrs$labels <- names(data)
+  attrs$legend <- "auto"
+  attrs$retainDateWindow <- FALSE
+  attrs$axes$x <- list() 
+  attrs$axes$x$pixelsPerLabel <- 60
+  # create x (dygraph attrs + some side data)
+  x <- list()
+  x$attrs <- attrs
+  x$scale <- if (format == "date") periodicity$scale else NULL
+  x$group <- group
+  x$annotations <- list()
+  x$shadings <- list()
+  x$events <- list()
+  x$format <- format 
+  
+  # Add format for further processing here
+  
+  # Add attributes required for defining custom series. When a dySeries call
+  # is made it places series definition in "manual mode". In this case we
+  # need to save the original data.
+  attr(x, "time") <- if (format == "date") time else NULL
+  attr(x, "data") <- data
+  attr(x, "autoSeries") <- 2
+  
+  # add data (strip names first so we marshall as a 2d array)
+  names(data) <- NULL
+  x$data <- data
 
   # create widget
-  htmlwidgets::createWidget(
-    name = 'g2plot',
-    x,
-    width = width,
-    height = height,
-    package = 'g2plot',
-    elementId = elementId
+  chart=htmlwidgets::createWidget(
+    name = 'g2plot'
+    ,x
+    ,width = width
+    ,height = height
+    ,htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE)
+    ,package = 'g2plot'
+    ,elementId = elementId
   )
+  chart
 }
 #' Shiny bindings for g2plot
 #'

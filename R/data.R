@@ -78,15 +78,15 @@ data_doublePie<-function(){
 
 }
 
-dataTransform<-function(data){
-    if(is.data.frame(data)){
-    if( ncol(data) =0 ) print('There no data in dataframe')}
-    else if(is.array(data)){print('array')}
-    else if(is.atomic(data)){print('atomic')}
-    else if(is.list(data)){print('list')}
-    else if(is.vector(data)){print('c')}
-    else if(is.matrix(data)){print('matrix')}
-    else if(is.ts(data)){print('ts')}
-    else if(is.tibble(data)){print('tibble')}
-    else stop('data type is not supported')}
+# dataTransform<-function(data){
+#     if(is.data.frame(data)){
+#     if( ncol(data) =0 ) print('There no data in dataframe')}
+#     else if(is.array(data)){print('array')}
+#     else if(is.atomic(data)){print('atomic')}
+#     else if(is.list(data)){print('list')}
+#     else if(is.vector(data)){print('c')}
+#     else if(is.matrix(data)){print('matrix')}
+#     else if(is.ts(data)){print('ts')}
+#     else if(is.tibble(data)){print('tibble')}
+#     else stop('data type is not supported')}
 
