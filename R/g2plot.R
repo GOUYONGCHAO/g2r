@@ -11,8 +11,8 @@ g2plot <- function(data, width = NULL, height = NULL, elementId = NULL, ...) {
   # create native g2plot attrs object
   attrs <- list()
   attrs$title <- title
-  attrs$xlabel <- xlab
-  attrs$ylabel <- ylab
+  attrs$xlabel <- NULL
+  attrs$ylabel <- NULL
   attrs$labels <- names(data)
   attrs$legend <- "auto"
   attrs$forceFit <- FALSE
@@ -23,21 +23,21 @@ g2plot <- function(data, width = NULL, height = NULL, elementId = NULL, ...) {
   # create native g2plot geom object
   geoms <- list()
   x <- list()
-  x$attrs <- attrs
+  x$attrs <-  NULL
   x$geoms <- geoms
   x$scale <-  NULL
-  x$group <- group
+  x$group <-  NULL
   x$annotations <- list()
   x$shadings <- list()
   x$events <- list()
-  x$format <- format
+  x$format <-  NULL
   # Add format for further processing here
   attr(x, "data") <- data
   # add data (strip names first so we marshall as a 2d array)
-  names(data) <- NULL
+  # names(data) <- NULL
   x$data <- data
   # create widget
-  gplot <- htmlwidgets::createWidget(
+  g2plot <- htmlwidgets::createWidget(
     name = 'g2plot'
     , x
     , width = width
@@ -46,7 +46,7 @@ g2plot <- function(data, width = NULL, height = NULL, elementId = NULL, ...) {
     , package = 'g2plot'
     , elementId = elementId
   )
-  gplot
+  g2plot
 }
 #' Shiny bindings for g2plot
 #'

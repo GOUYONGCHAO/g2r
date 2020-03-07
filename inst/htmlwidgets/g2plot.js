@@ -21,27 +21,34 @@ HTMLWidgets.widget({
           el.className += " qt";
         const attrs = x.attrs;
         // get g2plot data and attrbutions
-        const data = x.data
+        const data = HTMLWidgets.dataframeToD3(x.data)
         // if there is no existing g2plot perform initialization
-        if(length(x.geoms)!=0)
+        if(1)
         {
-          g2plot.data(x.data);
+          g2plot.data(data);
           for(const chart in x.geoms ){
-            if(x.geoms[chart].type=='line')        
+            if(x.geoms[chart].type=="line")        
             g2plot
             .line()
-            .postion(x.geoms[chart].postion)
+            .position(x.geoms[chart].position)
+            .color(x.geoms[chart].color)
             .size(x.geoms[chart].size)
-            .shape(x.geoms[chart].shape)
-            .opacity(x.geoms[chart].opacity)    
+            .shape(x.geoms[chart].shape);
+            else if (x.geoms[chart].type=="area")
+            g2plot
+            .area()
+            .position(x.geoms[chart].position)
+            .color(x.geoms[chart].color)
+            .shape(x.geoms[chart].shape);
           }
         }
-      g2plot.render()  ; 
+      g2plot.render(); 
       g2plot;
+      el=g2plot;
       },
       resize: function (width, height) {
-        if (g2plot)
-          g2plot.resize();
+        // if (g2plot)
+        //   g2plot.resize();
       }
     };
   },

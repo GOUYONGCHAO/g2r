@@ -2,25 +2,25 @@
 #
 #
 #' @export line
-line <- function(gplot,position,color,size,shape,opacity,...) {
-    # line chart for g2plot
-    geom<-list(list())
-    geom[[1]]$type<-'line'
-    geom[[1]]$color<-color
-    geom[[1]]$size<-size
-    geom[[1]]$shape<-shape
-    geom[[1]]$shape<-opacity
-    if(length(names(gplot$geoms))==0){
-        names(geoms)<-'chart1'
-        gplot$geoms<-geoms
-    }
-    else {
-        names(geoms)<-paste('chart',length(names(gplot$geoms)+1),sep='')
-        gplot$geoms<-mergeLists(gplot$geoms,geoms)
-    }
-    # return modified g2plot
-    gplot
- }
+line <- function(g2plot, position, color, size, shape, ...) {
+  # line chart for g2plot
+  geoms <- list(list())
+  geoms[[1]]$type <- 'line'
+  geoms[[1]]$position <- position
+  geoms[[1]]$color <- color
+  geoms[[1]]$size <- size
+  geoms[[1]]$shape <- shape
+  if (length(names(g2plot$x$geoms)) == 0) {
+    names(geoms) <- 'chart1'
+    g2plot$x$geoms <- geoms
+  }
+  else {
+    names(geoms) <- paste('chart', length(names(g2plot$x$geoms)) + 1, sep = '')
+    g2plot$x$geoms <- mergeLists(g2plot$x$geoms, geoms)
+  }
+  # return modified g2plot
+  g2plot
+}
 
 #' @export scatter
 #' 
@@ -29,9 +29,24 @@ scatter <- function(chart, ...) {
 
 #' @export area
 #' 
-area <- function(chart, ...) {
-
+area <- function(g2plot,position,color,shape, ...) {
+  geoms <- list(list())
+  geoms[[1]]$type <- 'area'
+  geoms[[1]]$position <- position
+  geoms[[1]]$color <- color
+  geoms[[1]]$shape <- shape
+  if (length(names(g2plot$x$geoms)) == 0) {
+    names(geoms) <- 'chart1'
+    g2plot$x$geoms <- geoms
+  }
+  else {
+    names(geoms) <- paste('chart', length(names(g2plot$x$geoms)) + 1, sep = '')
+    g2plot$x$geoms <- mergeLists(g2plot$x$geoms, geoms)
+  }
+  # return modified g2plot
+  g2plot
 }
+
 #' @export bubble
 #' 
 bubble <- function(chart, ...) {
