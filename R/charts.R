@@ -2,7 +2,25 @@
 #
 #
 #' @export line
-line <- function(chart, ...) { }
+line <- function(gplot,position,color,size,shape,opacity,...) {
+    # line chart for g2plot
+    geom<-list(list())
+    geom[[1]]$type<-'line'
+    geom[[1]]$color<-color
+    geom[[1]]$size<-size
+    geom[[1]]$shape<-shape
+    geom[[1]]$shape<-opacity
+    if(length(names(gplot$geoms))==0){
+        names(geoms)<-'chart1'
+        gplot$geoms<-geoms
+    }
+    else {
+        names(geoms)<-paste('chart',length(names(gplot$geoms)+1),sep='')
+        gplot$geoms<-mergeLists(gplot$geoms,geoms)
+    }
+    # return modified g2plot
+    gplot
+ }
 
 #' @export scatter
 #' 
