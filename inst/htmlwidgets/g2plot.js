@@ -23,28 +23,41 @@ HTMLWidgets.widget({
         // get g2plot data and attrbutions
         const data = HTMLWidgets.dataframeToD3(x.data)
         // if there is no existing g2plot perform initialization
-        if(1)
-        {
+        if (1) {
           g2plot.data(data);
-          for(const chart in x.geoms ){
-            if(x.geoms[chart].type=="line")        
-            g2plot
-            .line()
-            .position(x.geoms[chart].position)
-            .color(x.geoms[chart].color)
-            .size(x.geoms[chart].size)
-            .shape(x.geoms[chart].shape);
-            else if (x.geoms[chart].type=="area")
-            g2plot
-            .area()
-            .position(x.geoms[chart].position)
-            .color(x.geoms[chart].color)
-            .shape(x.geoms[chart].shape);
+          for (const chart in x.geoms) {
+            if (x.geoms[chart].type == "point")
+              g2plot
+                .point()
+                .position(x.geoms[chart].position)
+                .color(x.geoms[chart].color)
+                .size(x.geoms[chart].size)
+                .shape(x.geoms[chart].shape);
+            if (x.geoms[chart].type == "line")
+              g2plot
+                .line()
+                .position(x.geoms[chart].position)
+                .color(x.geoms[chart].color)
+                .size(x.geoms[chart].size)
+                .shape(x.geoms[chart].shape);
+            else if (x.geoms[chart].type == "area")
+              g2plot
+                .area()
+                .position(x.geoms[chart].position)
+                .color(x.geoms[chart].color)
+                .shape(x.geoms[chart].shape);
+            else if (x.geoms[chart].type == "interval")
+              g2plot
+                .interval()
+                .position(x.geoms[chart].position)
+                // .size(x.geoms[chart].size)
+                .color(x.geoms[chart].color);
+            // .shape(x.geoms[chart].shape);
           }
         }
-      g2plot.render(); 
-      g2plot;
-      el=g2plot;
+        g2plot.render();
+        g2plot;
+        el = g2plot;
       },
       resize: function (width, height) {
         // if (g2plot)

@@ -5,7 +5,7 @@ save <- function(){ }
 emptyList <- function() .emptyList
 
 # merge two lists  by names,eg. x = list(a = 1, b = 2), mergeList(x, list(b =3)) => list(a = 1, b = 3)
-
+# thanks for  yihuixie @rstudio
 mergeLists <- function (base_list, overlay_list, recursive = TRUE) {
   if (length(base_list) == 0)
     overlay_list
