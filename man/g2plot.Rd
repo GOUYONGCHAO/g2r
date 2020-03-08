@@ -4,7 +4,7 @@
 \alias{g2plot}
 \title{g2plot main function}
 \usage{
-g2plot(data, width = NULL, height = NULL, ...)
+g2plot(data, width = NULL, height = NULL, elementId = NULL, ...)
 }
 \arguments{
 \item{data}{data you will be plot}
