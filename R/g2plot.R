@@ -22,6 +22,7 @@ g2plot <- function(data, width = NULL, height = NULL, elementId = NULL, ...) {
   # create x (g2plot attrs + some side data)
   # create native g2plot geom object
   geoms <- list()
+  facet <- list()
   x <- list()
   x$attrs <-  NULL
   x$geoms <- geoms
@@ -31,6 +32,7 @@ g2plot <- function(data, width = NULL, height = NULL, elementId = NULL, ...) {
   x$shadings <- list()
   x$events <- list()
   x$format <-  NULL
+  x$facet<- facet
   # Add format for further processing here
   attr(x, "data") <- data
   # add data (strip names first so we marshall as a 2d array)

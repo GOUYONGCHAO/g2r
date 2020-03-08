@@ -10,6 +10,7 @@ point <- function(g2plot, position, color, size, shape, ...) {
   geoms[[1]]$position <- position
   geoms[[1]]$color <- color
   geoms[[1]]$size <- size
+  if(missing(shape)) shape<-'circle'
   geoms[[1]]$shape <- shape
   if (length(names(g2plot$x$geoms)) == 0) {
     names(geoms) <- 'chart1'
